@@ -34,22 +34,25 @@ html, body {
     outline-offset: 1rem;
     backdrop-filter: brightness(3) contrast(1.2) saturate(1.5);
     transform: perspective(500px) rotate3d(1, 1, 0, 20deg) scale3d(1.1, 1.1, 1.1);
-
-    animation: infiniteOutline 4s infinite ease-in-out;
+    will-change: outline-offset, transform, filter;
+    animation: infiniteOutline 6s infinite ease-in-out;
 }
 
 
 @keyframes infiniteOutline {
-    0% {
-        outline-offset: 1rem;
-    }
-    50% {
-        outline-offset: 1.5rem;
-    }
+    0%,
+    30%,
+    70%,
     100% {
-        outline-offset: 1rem;
+      outline-offset: 1rem;
     }
-}
+    15%,
+    50%,
+    80% {
+      outline-offset: 1.5rem;
+    }
+  }
+  
 
 
 
