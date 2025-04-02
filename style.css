@@ -1,0 +1,55 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+.background {
+    height: 100%;
+    background-image: url('./assets/bgInicial.png');
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+
+#start-button {
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    color: white;
+    border: none;
+    padding: 1rem 5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease, outline-offset 0.3s ease;
+    margin-bottom: 4rem;
+    transform: scale(1);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    backdrop-filter: blur(1px) brightness(2);
+}
+
+#start-button:hover {
+    filter: brightness(1.2);
+    outline-style: double;
+    outline-offset: 1rem;
+    backdrop-filter: brightness(3) contrast(1.2) saturate(1.5);
+    transform: perspective(500px) rotate3d(1, 1, 0, 20deg) scale3d(1.1, 1.1, 1.1);
+
+    animation: infiniteOutline 4s infinite ease-in-out;
+}
+
+
+@keyframes infiniteOutline {
+    0% {
+        outline-offset: 1rem;
+    }
+    50% {
+        outline-offset: 1.5rem;
+    }
+    100% {
+        outline-offset: 1rem;
+    }
+}
+
+
+
