@@ -22,29 +22,58 @@ html, body {
     font-size: 1.5rem;
     cursor: pointer;
     border-radius: 50px;
-    transition: all 0.3s ease, outline-offset 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, filter 0.3s ease;
     margin-bottom: 4rem;
     transform: scale(1);
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    outline: 4px solid transparent;
+    outline-offset: 0px;
+    box-shadow: none;
     backdrop-filter: blur(1px) brightness(2);
-    will-change: outline-offset, transform, filter;
+    will-change: transform, box-shadow;
   }
   
   #start-button:hover {
-    filter: brightness(1.2);
-    outline-style: double;
-    outline-offset: 1rem;
-    backdrop-filter: brightness(3) contrast(1.2) saturate(1.5);
-    transform: perspective(500px) rotate3d(1, 1, 0, 20deg) scale3d(1.1, 1.1, 1.1);
-    animation: infiniteOutline 6s infinite ease-in-out;
+
+    outline-offset: 10px;
+    box-shadow:
+      0 0 15px rgba(255, 255, 255, 0.6),
+      0 0 25px rgba(0, 110, 255, 0.4),
+      0 0 40px rgba(0, 110, 255, 0.3);
+      filter: brightness(1.7);
   }
-  
-  @keyframes infiniteOutline {
-    0%, 30%, 70%, 100% {
-      outline-offset: 1rem;
+
+  #start-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    outline: 3px solid rgba(255, 255, 255, 0.1);
+    outline-offset: 0px;
+    z-index: -1;
+    transition: all 0.4 ease;
+    animation: none
+  }
+
+  #start-button:hover::after {
+    opacity: 1;
+    animation: expandOutline 0.6s ease forwards;
+  }
+
+  @keyframes expandOutline {
+    0% {
+      transform: scale(0.8);
+      outline-offset: 0px;
+      opacity: 0;
     }
-    15%, 50%, 80% {
-      outline-offset: 1.5rem;
+    50% {
+      transform: scale(1.05);
+      outline-offset: 8px;
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      outline-offset: 12px;
+      opacity: 1;
     }
   }
   
@@ -54,11 +83,6 @@ html, body {
       font-size: 1.2rem;
       margin-bottom: 3rem;
     }
-  
-    #start-button:hover {
-      transform: perspective(500px) rotate3d(1, 1, 0, 20deg) scale3d(1.1, 1.1, 1.1);
-
-    }
   }
   
   @media (max-width: 480px) {
@@ -66,10 +90,6 @@ html, body {
       padding: 0.6rem 2rem;
       font-size: 1rem;
       margin-bottom: 2rem;
-    }
-  
-    #start-button:hover {
-      transform: scale(1.02);
     }
   }
   
